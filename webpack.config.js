@@ -1,11 +1,19 @@
+const HtmlWebpackPlugin = require('html-webpack-plugin')
+
 module.exports = {
   mode: "development",
   devtool: "inline-source-map",
   entry: "./src/index.ts",
   output: {
-    filename: "main.js",
+    filename: "main-[hash].js",
     publicPath: "dist/"
   },
+  plugins: [
+    new HtmlWebpackPlugin({
+      filename: 'index.html',
+      template: "template.html"
+    })
+  ],
   module: {
     rules: [{
         test: /\.js$/,

@@ -1,0 +1,47 @@
+<!-- index.html -->
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <title>Game enterer</title>
+</head>
+
+<body>
+  <h1>Enter your games here, and get a PGN back</h1>
+
+  <div class="container">
+    <div class="row">
+      <div class="col-sm-6">
+        <section class="blue merida">
+          <div id="ground1">
+
+          </div>
+          <br />
+          <div id="buttons">
+            <button id="back" class="btn btn-primary">&lt;</button>
+            &nbsp;
+            <button id="restart" class="btn btn-danger">Restart</button>
+            &nbsp;
+            <button id="next" class="btn btn-primary">&gt;</button>
+          </div>
+
+        </section>
+
+      </div>
+
+      <div class="col-sm-6">
+        <textarea rows="10" cols="75" id="pgn">
+
+
+        </textarea>
+
+      </div>
+
+    </div>
+  </div>
+
+  <script src="main-<%= htmlWebpackPlugin.options.hash %>.js"></script>
+</body>
+
+</html>
