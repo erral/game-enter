@@ -31,6 +31,3 @@ When you have it ready to be deployed to github pages automatically (in a branch
 
 - npm run build
 - npm run deploy
-
-- npm run build
-- npm run deploy
