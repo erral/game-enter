@@ -6,7 +6,7 @@ module.exports = {
   entry: "./src/index.ts",
   output: {
     filename: "main-[hash].js",
-    publicPath: "dist/"
+    publicPath: "/game-enter/"
   },
   plugins: [
     new HtmlWebpackPlugin({
