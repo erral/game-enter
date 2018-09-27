@@ -1,7 +1,8 @@
 import "./assets/chessground.css";
 import "./assets/theme.css";
 import "./style.css";
-import "bootstrap/dist/css/bootstrap.css";
+import "./style.scss";
+
 import { Chessground } from "chessground";
 import { Api } from "chessground/api";
 
