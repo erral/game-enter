@@ -1,25 +1,47 @@
 <!-- index.html -->
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8">
-  <title>JavaScript Example</title>
+  <title>Game enterer</title>
 </head>
-<body>
-  <h1>Hello from HTML!</h1>
 
-  <section class="blue merida">
-    <div id="ground1">
+<body>
+  <h1>Enter your games here, and get a PGN back</h1>
+
+  <div class="container">
+    <div class="row">
+      <div class="col-sm-6">
+        <section class="blue merida">
+          <div id="ground1">
+
+          </div>
+          <br />
+          <div id="buttons">
+            <button id="back">&lt;</button>
+            &nbsp;
+            <button id="restart">Restart</button>
+            &nbsp;
+            <button id="next">&gt;</button>
+          </div>
+
+        </section>
+
+      </div>
+
+      <div class="col-sm-6">
+        <textarea rows="10" cols="75" id="pgn">
+
+
+        </textarea>
+
+      </div>
 
     </div>
-<br/><br/>
-    <textarea rows="10" cols="30" id="pgn">
-
-
-    </textarea>
-
-  </section>
+  </div>
 
   <script src="dist/main.js"></script>
 </body>
+
 </html>

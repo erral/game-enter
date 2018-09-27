@@ -1,14 +1,11 @@
 import "./assets/chessground.css";
 import "./assets/theme.css";
 import "./style.css";
+import "bootstrap/dist/css/bootstrap.css";
+import { Chessground } from "chessground";
+import { Api } from "chessground/api";
 
 var chess_js = require("chess.js");
-import { Chessground } from "chessground";
-//import { toDests, playOtherSide } from "./utils";
-//var Chessground = require("chessground");
-//import Chessground from "chessground";
-
-import { Api } from "chessground/api";
 
 export function toDests(chess: any) {
   const dests = {};
@@ -26,7 +23,7 @@ export function toColor(chess: any) {
 export function playOtherSide(cg: Api, chess) {
   return (orig, dest) => {
     chess.move({ from: orig, to: dest });
-    document.getElementById("pgn").innerHTML = chess.pgn();
+    rewritePgn();
     cg.set({
       turnColor: toColor(chess),
       movable: {
@@ -37,28 +34,63 @@ export function playOtherSide(cg: Api, chess) {
   };
 }
 
-export function writePGN(cg: Api, chess) {
-  console.log("writePGN");
+export function changeBackorNext(cg, chess) {
+  rewritePgn();
+  cg.set({
+    turnColor: toColor(chess),
+    movable: {
+      color: toColor(chess),
+      dests: toDests(chess)
+    }
+  });
 }
 
-export function doThingsAfterMove(cg: Api, chess) {
-  return (orig, dest) => {
-    playOtherSide(cg, chess);
-    writePGN(cg, chess);
-  };
+export function rewritePgn() {
+  document.getElementById("pgn").innerHTML = chess.pgn();
 }
 
 var el = document.getElementById("ground1");
 
 const chess = new chess_js();
 
-const cg = Chessground(el, {
+const mymoves = [];
+
+const chessgr = Chessground(el, {
   movable: {
     color: "white",
     free: false,
     dests: toDests(chess)
   }
 });
-cg.set({
-  movable: { events: { after: playOtherSide(cg, chess) } }
+chessgr.set({
+  movable: { events: { after: playOtherSide(chessgr, chess) } }
+});
+
+var next = document.getElementById("next");
+next.addEventListener("click", function(this, event) {
+  console.log("next");
+  console.log(chessgr);
+  var move = mymoves.pop();
+  chess.move(move);
+  chessgr.set({ fen: chess.fen() });
+  changeBackorNext(chessgr, chess);
+  //chessgr.set({ turnColor: chess.turn() });
+  //let a = playOtherSide(chessgr, chess);
+  let b = 1;
+});
+
+var back = document.getElementById("back");
+back.addEventListener("click", function(this, event) {
+  var move = chess.undo();
+  mymoves.push(move);
+  chessgr.set({ fen: chess.fen() });
+  changeBackorNext(chessgr, chess);
+  // rewritePgn();
+  // chessgr.set({ turnColor: chess.turn() });
+  let b = 1;
+});
+
+var restart = document.getElementById("restart");
+restart.addEventListener("click", function(this, event) {
+  document.location.reload();
 });
