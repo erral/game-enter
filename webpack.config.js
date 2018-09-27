@@ -4,11 +4,10 @@ module.exports = {
   entry: "./src/index.ts",
   output: {
     filename: "main.js",
-    publicPath: "dist"
+    publicPath: "dist/"
   },
   module: {
-    rules: [
-      {
+    rules: [{
         test: /\.js$/,
         exclude: /node_modules/,
         use: {
