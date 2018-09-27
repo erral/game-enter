@@ -1,0 +1,33 @@
+{
+  "name": "game-enter",
+  "version": "1.0.0",
+  "description": "",
+  "main": "src/index.ts",
+  "scripts": {
+    "build": "webpack --progress --mode=production",
+    "watch": "webpack --progress --watch -d",
+    "webpack": "webpack",
+    "server": "webpack-dev-server -d"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "chess.js": "^0.10.2",
+    "chessground": "^7.3.2"
+  },
+  "devDependencies": {
+    "@babel/core": "^7.1.0",
+    "@babel/preset-env": "^7.1.0",
+    "@types/node": "^10.11.1",
+    "babel-loader": "^8.0.2",
+    "css-loader": "^1.0.0",
+    "file-loader": "^2.0.0",
+    "image-webpack-loader": "^4.3.1",
+    "style-loader": "^0.23.0",
+    "ts-loader": "^5.2.1",
+    "typescript": "^3.1.1",
+    "webpack": "^4.20.2",
+    "webpack-cli": "^3.1.1",
+    "webpack-dev-server": "^3.1.9"
+  }
+}
