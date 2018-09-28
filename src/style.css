@@ -5,5 +5,16 @@
 }
 
 #pgn {
-    margin-top: 50px;
+    margin-top: 10px;
+
+}
+
+h1,
+h2 {
+    text-align: center;
+}
+
+#row-load-pgn {
+    margin: 0 auto;
+    text-align: center;
 }

@@ -101,3 +101,43 @@ var restart = document.getElementById("restart");
 restart.addEventListener("click", function(this, event) {
   document.location.reload();
 });
+
+function fixDateHeader() {
+  /* Sometimes the date header is not read correctly
+   * and instead of the date, it saves all the header:
+   * [Date "[Date "2018.10.11" ]"]
+   */
+  let val = chess.header()["Date"];
+  if (val.startsWith("[Date")) {
+    val = val.replace('[Date "', "").replace('" ]', "");
+    chess.header("Date", val);
+  }
+}
+
+var uploadbutton = document.getElementById("pgn-upload-button");
+uploadbutton.addEventListener("click", function(this, event) {
+  let textarea = document.getElementById("pgn-upload") as HTMLInputElement;
+  chess.reset();
+  chess.load_pgn(textarea.value);
+  textarea.value = "";
+  window.alert("PGN loaded");
+  fixDateHeader();
+});
+
+var result_white = document.getElementById("result-white");
+result_white.addEventListener("click", function() {
+  chess.header("Result", "1-0");
+  rewritePgn();
+});
+
+var result_black = document.getElementById("result-black");
+result_black.addEventListener("click", function() {
+  chess.header("Result", "0-1");
+  rewritePgn();
+});
+
+var result_draw = document.getElementById("result-draw");
+result_draw.addEventListener("click", function() {
+  chess.header("Result", "1/2-1/2");
+  rewritePgn();
+});

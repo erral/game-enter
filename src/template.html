@@ -10,6 +10,21 @@
 <body>
   <h1>Enter your games here, and get a PGN back</h1>
 
+  <h2>1. Enter the header of the PGN file here </h2>
+
+  <div id="row-load-pgn">
+    <div class="row">
+      <div class="col-sm">
+        <textarea rows="10" cols="75" id="pgn-upload"></textarea>
+        <br />
+        <button id="pgn-upload-button" class="btn btn-success">Load PGN</button>
+      </div>
+    </div>
+
+  </div>
+
+  <h2>2. Enter the game here</h2>
+
   <div class="container">
     <div class="row">
       <div class="col-sm-6">
@@ -24,6 +39,17 @@
             <button id="restart" class="btn btn-danger">Restart</button>
             &nbsp;
             <button id="next" class="btn btn-primary">&gt;</button>
+            <br /><br />
+            <div class="btn-group">
+              <p>
+                <strong>
+                  After entering the game enter the result here
+                </strong>
+              </p>
+              <button class="btn btn-outline-dark" id="result-white">1-0</button>
+              <button class="btn btn-outline-dark" id="result-draw">1/2-1/2</button>
+              <button class="btn btn-outline-dark" id="result-black">0-1</button>
+            </div>
           </div>
 
         </section>
@@ -31,16 +57,15 @@
       </div>
 
       <div class="col-sm-6">
-        <textarea rows="10" cols="75" id="pgn">
-
-
-        </textarea>
+        <textarea rows="25" cols="75" id="pgn"></textarea>
 
       </div>
 
     </div>
-  </div>
 
+
+  </div>
+  <br /><br /><br /><br /><br /><br />
 </body>
 
 </html>
