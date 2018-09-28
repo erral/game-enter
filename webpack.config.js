@@ -25,8 +25,7 @@ module.exports = {
     })
   ],
   module: {
-    rules: [
-      {
+    rules: [{
         test: /\.js$/,
         exclude: /node_modules/,
         use: {
@@ -52,7 +51,7 @@ module.exports = {
           {
             loader: "postcss-loader", // Run post css actions
             options: {
-              plugins: function() {
+              plugins: function () {
                 // post css plugins, can be exported to postcss.config.js
                 return [require("precss"), require("autoprefixer")];
               }
