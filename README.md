@@ -29,5 +29,4 @@ It will create a dist folder with the relevant files (HTML, JS and images), with
 
 When you have it ready to be deployed to github pages automatically (in a branch called gh-pages):
 
-- npm run build
-- npm run deploy
+- npm run github
