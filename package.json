@@ -4,11 +4,11 @@
   "description": "",
   "main": "src/index.ts",
   "scripts": {
-    "build": "webpack --progress --mode=production",
-    "watch": "webpack --progress --watch -d",
+    "build": "webpack --progress --mode=production --config=webpack.prod.js",
+    "github": "webpack --progress --mode=production --config=webpack.github.js && gh-pages -d dist",
+    "watch": "webpack --progress --watch -d --config=webpack.dev.js",
     "webpack": "webpack",
-    "server": "webpack-dev-server -d",
-    "deploy": "gh-pages -d dist"
+    "server": "webpack-dev-server -d --config=webpack.dev.js"
   },
   "repository": "https://github.com/erral/game-enter",
   "author": "Mikel Larreategi",
@@ -24,6 +24,7 @@
     "@types/node": "^10.11.1",
     "autoprefixer": "^9.1.5",
     "babel-loader": "^8.0.2",
+    "clean-webpack-plugin": "^0.1.19",
     "css-loader": "^1.0.0",
     "file-loader": "^2.0.0",
     "gh-pages": "^2.0.0",
@@ -38,6 +39,7 @@
     "typescript": "^3.1.1",
     "webpack": "^4.20.2",
     "webpack-cli": "^3.1.1",
-    "webpack-dev-server": "^3.1.9"
+    "webpack-dev-server": "^3.1.9",
+    "webpack-merge": "^4.1.4"
   }
 }
