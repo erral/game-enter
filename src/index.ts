@@ -23,7 +23,17 @@ export function toColor(chess: any) {
 
 export function playOtherSide(cg: Api, chess) {
   return (orig, dest) => {
-    chess.move({ from: orig, to: dest });
+    console.log(chessgr);
+    let move = { from: orig, to: dest };
+    if (chess.turn() == "w" && dest.endsWith("8")) {
+      console.log("show promotion popup for white");
+      move["promotion"] = "q";
+      chessgr.state.pieces[dest].role = "queen";
+    } else if (chess.turn() == "b" && dest.endsWith("1")) {
+      move["promotion"] = "q";
+      chessgr.state.pieces[dest].role = "queen";
+    }
+    chess.move(move);
     rewritePgn();
     cg.set({
       turnColor: toColor(chess),
