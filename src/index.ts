@@ -23,7 +23,6 @@ export function toColor(chess: any) {
 
 export function playOtherSide(cg: Api, chess) {
   return (orig, dest) => {
-    console.log(chessgr);
     let move = { from: orig, to: dest };
 
     // Promotion handling
