@@ -1,5 +1,9 @@
 const HtmlWebpackPlugin = require("html-webpack-plugin");
 const CleanWebpackPlugin = require("clean-webpack-plugin");
+const MiniCssExtractPlugin = require("mini-css-extract-plugin");
+
+//const devMode = process.env.NODE_ENV !== "production";
+const devMode = false;
 
 module.exports = {
   mode: "development",
@@ -9,6 +13,12 @@ module.exports = {
     filename: "main.js"
   },
   plugins: [
+    new MiniCssExtractPlugin({
+      // Options similar to the same options in webpackOptions.output
+      // both options are optional
+      filename: devMode ? "[name].css" : "[name]-[hash].css",
+      chunkFilename: devMode ? "aa[id].css" : "aa[id]-[hash].css"
+    }),
     new CleanWebpackPlugin(["dist"]),
     new HtmlWebpackPlugin({
       template: "src/template.html"
@@ -33,20 +43,12 @@ module.exports = {
           loader: "ts-loader"
         }
       },
-
       {
-        test: /\.css$/,
-        use: ["style-loader", "css-loader"]
-      },
-      {
-        test: /\.(scss)$/,
+        test: /\.(sa|sc|c)ss$/,
         use: [
-          {
-            loader: "style-loader" // inject CSS to page
-          },
-          {
-            loader: "css-loader" // translates CSS into CommonJS modules
-          },
+          //devMode ? "style-loader" : MiniCssExtractPlugin.loader,
+          MiniCssExtractPlugin.loader,
+          "css-loader",
           {
             loader: "postcss-loader", // Run post css actions
             options: {

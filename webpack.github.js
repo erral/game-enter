@@ -1,8 +1,7 @@
 const merge = require("webpack-merge");
-const common = require("./webpack.config.js");
-var path = require("path");
+const common = require("./webpack.prod.js");
 
-module.exports = merge(common, {
+module.exports = merge.smart(common, {
   mode: "production",
   output: {
     filename: "main-[hash].js",
