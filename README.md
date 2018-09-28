@@ -30,3 +30,9 @@ It will create a dist folder with the relevant files (HTML, JS and images), with
 When you have it ready to be deployed to github pages automatically (in a branch called gh-pages):
 
 - npm run github
+
+If you want to inspect the code generated for github, you can run the following:
+
+- npm run build-github
+
+This is the same as the `npm run build` but with a different public path to match the path of github-pages.
