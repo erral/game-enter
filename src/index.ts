@@ -27,11 +27,15 @@ export function playOtherSide(cg: Api, chess) {
     let move = { from: orig, to: dest };
 
     // Promotion handling
-    if (chess.turn() == "w" && dest.endsWith("8")) {
-      console.log("show promotion popup for white");
-      move["promotion"] = "q";
-    } else if (chess.turn() == "b" && dest.endsWith("1")) {
-      move["promotion"] = "q";
+    if (
+      (chess.turn() == "w" && dest.endsWith("8")) ||
+      (chess.turn() == "b" && dest.endsWith("1"))
+    ) {
+      var promoted_piece = window.prompt(
+        "Write the selected piece (n,b,r or q)",
+        "q"
+      );
+      move["promotion"] = promoted_piece;
     }
     chess.move(move);
     chessgr.set({ fen: chess.fen() });
@@ -80,15 +84,10 @@ chessgr.set({
 
 var next = document.getElementById("next");
 next.addEventListener("click", function(this, event) {
-  console.log("next");
-  console.log(chessgr);
   var move = mymoves.pop();
   chess.move(move);
   chessgr.set({ fen: chess.fen() });
   changeBackorNext(chessgr, chess);
-  //chessgr.set({ turnColor: chess.turn() });
-  //let a = playOtherSide(chessgr, chess);
-  let b = 1;
 });
 
 var back = document.getElementById("back");
@@ -97,9 +96,6 @@ back.addEventListener("click", function(this, event) {
   mymoves.push(move);
   chessgr.set({ fen: chess.fen() });
   changeBackorNext(chessgr, chess);
-  // rewritePgn();
-  // chessgr.set({ turnColor: chess.turn() });
-  let b = 1;
 });
 
 var restart = document.getElementById("restart");
