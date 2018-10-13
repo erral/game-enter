@@ -27,8 +27,9 @@ export function playOtherSide(cg: Api, chess) {
 
     // Promotion handling
     if (
-      (chess.turn() == "w" && dest.endsWith("8")) ||
-      (chess.turn() == "b" && dest.endsWith("1"))
+      ((chess.turn() == "w" && dest.endsWith("8")) ||
+        (chess.turn() == "b" && dest.endsWith("1"))) &&
+      chessgr.state.pieces[dest]["role"] == "pawn"
     ) {
       var promoted_piece = window.prompt(
         "Write the selected piece (n,b,r or q)",
