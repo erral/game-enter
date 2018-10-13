@@ -22,7 +22,7 @@ export function toColor(chess: any) {
 }
 
 export function playOtherSide(cg: Api, chess) {
-  return (orig, dest) => {
+  return (orig, dest, metadata) => {
     let move = { from: orig, to: dest };
 
     // Promotion handling
