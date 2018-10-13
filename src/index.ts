@@ -122,6 +122,10 @@ uploadbutton.addEventListener("click", function(this, event) {
   chess.load_pgn(textarea.value);
   textarea.value = "";
   window.alert("PGN loaded");
+  let whiteplayer = document.getElementById("white-player");
+  let blackplayer = document.getElementById("black-player");
+  whiteplayer.innerText = chess.header()["White"];
+  blackplayer.innerText = chess.header()["Black"];
   fixDateHeader();
 });
 
